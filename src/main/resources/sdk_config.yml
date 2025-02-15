@@ -1,0 +1,99 @@
+chain_client:
+  # 链ID
+  chain_id: "file_storage_share"
+  # 组织ID
+  org_id: "root"
+  # 客户端用户私钥路径
+  user_key_file_path: "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/user/admin1/TlsKey.key"
+  # 客户端用户证书路径
+  user_crt_file_path: "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/user/admin1/TlsCert.crt"
+  # 客户端用户交易签名私钥路径(若未设置，将使用user_key_file_path)
+  user_sign_key_file_path: "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/user/admin1/SignKey.key"
+  # 客户端用户交易签名证书路径(若未设置，将使用user_crt_file_path)
+  user_sign_crt_file_path: "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/user/admin1/SignCert.crt"
+
+  retry_limit: 10
+  # 同步交易结果模式下，每次轮训交易结果时的等待时间，单位：ms 删除此项或设为<=0 则使用默认值 500
+  retry_interval: 500
+  # 当前签名证书的别名。当设置此配置项时，chain client 对象将自动检查链上是否已添加此别名，如果没有则自动上链此证书别名，
+  # 并且后续所有交易都会使用别名，别名可降低交易体大小。若为空则不启用。
+  #  alias: mycert5
+
+  nodes:
+    - # 节点地址，格式为：IP:端口:连接数
+      node_addr: "192.168.56.105:12301"
+      # 节点连接数
+      conn_cnt: 4
+      # RPC连接是否启用双向TLS认证
+      enable_tls: false
+      # 信任证书池路径
+      trust_root_paths:
+        - "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/ca/root"
+      # TLS hostname
+#      tls_host_name: "chainmaker.org"
+    - # 节点地址，格式为：IP:端口:连接数
+      node_addr: "192.168.56.105:12302"
+      # 节点连接数
+      conn_cnt: 4
+      # RPC连接是否启用双向TLS认证
+      enable_tls: false
+      # 信任证书池路径
+      trust_root_paths:
+        - "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/ca/root"
+#      # TLS hostname
+#      tls_host_name: "common1.tls.org2.cmtestnet"
+    - # 节点地址，格式为：IP:端口:连接数
+      node_addr: "192.168.56.105:12303"
+      # 节点连接数
+      conn_cnt: 4
+      # RPC连接是否启用双向TLS认证
+      enable_tls: false
+      # 信任证书池路径
+      trust_root_paths:
+        - "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/ca/root"
+#      # TLS hostname
+#      tls_host_name: "common1.tls.org3.cmtestnet"
+    - # 节点地址，格式为：IP:端口:连接数
+      node_addr: "192.168.56.105:12304"
+      # 节点连接数
+      conn_cnt: 4
+      # RPC连接是否启用双向TLS认证
+      enable_tls: false
+      # 信任证书池路径
+      trust_root_paths:
+        - "C:/Users/CKXG/Documents/CODE/BLOCKCHAIN/desciPlatform/src/main/resources/crypto-config/ca/root"
+#      # TLS hostname
+#      tls_host_name: "common1.tls.org4.cmtestnet"
+#  archive:
+#    # 数据归档链外存储相关配置
+#    type: "mysql"
+#    dest: "root:123456:localhost:3306"
+#    secret_key: xxx
+
+  rpc_client:
+    # grpc客户端最大接受容量(MB)
+    max_receive_message_size: 16
+
+#  pkcs11:
+#    enabled: false # pkcs11 is not used by default
+
+#  # 交易结果是否订阅获取
+#  enable_tx_result_dispatcher: true
+
+#  ##连接池配置
+#  connPool:
+#    # 最大连接数
+#    maxTotal: 3
+#    # 最少空闲连接
+#    minIdle: 0
+#    #最大空闲连接
+#    maxIdle: 3
+#    #连接空闲最小保活时间，默认即为30分钟(18000000)，单位：ms
+#    minEvictableIdleTime: 350000
+#    #回收空闲线程的执行周期，单位毫秒。默认值10000ms（10s） ，-1 表示不启用线程回收资源，单位：ms
+#    timeBetweenEvictionRuns: 10000
+#    #没有空闲连接时，获取连接是否阻塞
+#    blockWhenExhausted: true
+#    #当没有空闲连接时，获取连接阻塞等待时间，单位：ms
+#    maxWaitMillis: 3000
+

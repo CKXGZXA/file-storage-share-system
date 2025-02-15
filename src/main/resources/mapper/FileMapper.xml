@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.ckxgzxa.filestoragesharesystem.mapper.FileMapper">
+
+    <resultMap type="top.ckxgzxa.filestoragesharesystem.domain.po.FilePO" id="FileResult">
+        <id     property="id"       column="id"      />
+        <result property="fileName"     column="file_name"    />
+        <result property="uuid"     column="uuid"    />
+        <result property="cid"     column="cid"    />
+        <result property="md5"     column="md5"    />
+        <result property="size"     column="size"    />
+        <result property="status"     column="status"    />
+    </resultMap>
+
+    <insert id="insertSFile">
+        INSERT INTO sys_file(file_name, uuid, cid, size, md5, upload_time, owner, tx_id) VALUES (#{fileName},#{uuid}, #{cid}, #{size}, #{md5}, #{uploadTime}, #{ownerId}, #{txId})
+    </insert>
+    <select id="selectFileByMd5" resultMap="FileResult">
+        SELECT * FROM sys_file WHERE md5 = #{md5} AND deleted = 0
+    </select>
+    <select id="selectFileList" resultMap="FileResult">
+        SELECT * FROM sys_file WHERE deleted = 0
+    </select>
+
+</mapper>

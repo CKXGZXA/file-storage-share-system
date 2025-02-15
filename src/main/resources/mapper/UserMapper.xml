@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.ckxgzxa.filestoragesharesystem.mapper.UserMapper">
+
+    <resultMap id="UserPOResult" type="top.ckxgzxa.filestoragesharesystem.domain.po.UserPO">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="salt" column="salt" />
+        <result property="userKey" column="user_key" />
+        <result property="userCrt" column="user_crt" />
+        <result property="userSignKey" column="user_sign_key" />
+        <result property="userSignCrt" column="user_sign_crt" />
+        <result property="isAdmin" column="is_admin" />
+    </resultMap>
+
+    <select id="selectUserByUserId" resultMap="UserPOResult">
+        SELECT * FROM sys_user WHERE id = #{userId}
+    </select>
+    <select id="findUserByUsername" resultMap="UserPOResult">
+        SELECT * FROM sys_user WHERE username = #{username}
+    </select>
+    <select id="selectUserOptions" resultType="top.ckxgzxa.filestoragesharesystem.domain.vo.UserOption">
+        SELECT
+            sys_user.id AS `userId`,
+            sys_user.username AS `username`,
+            sys_user.addr AS `userAddr`
+        FROM
+            sys_user
+        WHERE
+            sys_user.username LIKE CONCAT('%', #{key}, '%')
+           OR sys_user.addr = #{key}
+        ORDER BY
+            sys_user.`id` ASC
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/file_storage_share?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+server:
+  port: 8080
+
+file:
+  path: C:\\Users\\CKXG\\Documents\\CODE\\BLOCKCHAIN\\desciPlatform\\src\\main\\resources\\static\\files\\
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    top.ckxgzxa.filestoragesharesystem.mapper: debug
+
+chainmaker:
+  chain-id: chain1
+  nodes:
+    node-grpc-urls: 192.168.56.105:12301
+    conn-cnt: 10
+
+  ca:
+    url:
+    timeout: 5000
+  rpc_client:
+    # grpc客户端最大接受容量(MB)
+    max_receive_message_size: 16
